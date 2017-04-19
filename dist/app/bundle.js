@@ -58,9 +58,9 @@
 
 	var _Root = __webpack_require__(239);
 
-	var _User = __webpack_require__(240);
+	var _User = __webpack_require__(241);
 
-	var _CreateUser = __webpack_require__(244);
+	var _CreateUser = __webpack_require__(243);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27605,9 +27605,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Nav = __webpack_require__(243);
+	var _Nav = __webpack_require__(240);
 
-	var _User = __webpack_require__(240);
+	var _User = __webpack_require__(241);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27658,6 +27658,68 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.Nav = undefined;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(181);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Nav = exports.Nav = function Nav(props) {
+	    return _react2.default.createElement(
+	        "nav",
+	        { className: "navbar navbar-toggleable-md navbar-light bg-faded" },
+	        _react2.default.createElement(
+	            "button",
+	            { className: "navbar-toggler navbar-toggler-right", type: "button", "data-toggle": "collapse", "data-target": "#navbarSupportedContent", "aria-controls": "navbarSupportedContent", "aria-expanded": "false", "aria-label": "Toggle navigation" },
+	            _react2.default.createElement("span", { className: "navbar-toggler-icon" })
+	        ),
+	        _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: "/home", className: "navbar-brand", href: "#" },
+	            "Navbar"
+	        ),
+	        _react2.default.createElement(
+	            "div",
+	            { className: "collapse navbar-collapse", id: "navbarSupportedContent" },
+	            _react2.default.createElement(
+	                "ul",
+	                { className: "navbar-nav mr-auto" },
+	                _react2.default.createElement(
+	                    "li",
+	                    { className: "nav-item active" },
+	                    _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: "/user", activeStyle: { color: "red" }, className: "nav-link", href: "#" },
+	                        "User"
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "li",
+	                    { className: "nav-item" },
+	                    _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: "/create_user", activeClassName: "active", className: "nav-link", href: "#" },
+	                        "Create User"
+	                    )
+	                )
+	            )
+	        )
+	    );
+	};
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.User = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -27666,7 +27728,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _UserList = __webpack_require__(241);
+	var _UserList = __webpack_require__(242);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27731,7 +27793,7 @@
 	}(_react2.default.Component);
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27792,70 +27854,7 @@
 	;
 
 /***/ },
-/* 242 */,
 /* 243 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.Nav = undefined;
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(181);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Nav = exports.Nav = function Nav(props) {
-	    return _react2.default.createElement(
-	        "nav",
-	        { className: "navbar navbar-toggleable-md navbar-light bg-faded" },
-	        _react2.default.createElement(
-	            "button",
-	            { className: "navbar-toggler navbar-toggler-right", type: "button", "data-toggle": "collapse", "data-target": "#navbarSupportedContent", "aria-controls": "navbarSupportedContent", "aria-expanded": "false", "aria-label": "Toggle navigation" },
-	            _react2.default.createElement("span", { className: "navbar-toggler-icon" })
-	        ),
-	        _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: "/home", className: "navbar-brand", href: "#" },
-	            "Navbar"
-	        ),
-	        _react2.default.createElement(
-	            "div",
-	            { className: "collapse navbar-collapse", id: "navbarSupportedContent" },
-	            _react2.default.createElement(
-	                "ul",
-	                { className: "navbar-nav mr-auto" },
-	                _react2.default.createElement(
-	                    "li",
-	                    { className: "nav-item active" },
-	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: "/user", activeStyle: { color: "red" }, className: "nav-link", href: "#" },
-	                        "User"
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    "li",
-	                    { className: "nav-item" },
-	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: "/create_user", activeClassName: "active", className: "nav-link", href: "#" },
-	                        "Create User"
-	                    )
-	                )
-	            )
-	        )
-	    );
-	};
-
-/***/ },
-/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
