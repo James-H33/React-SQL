@@ -20,28 +20,17 @@ app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', req.get('Origin') || '*');
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
 
-// Connection.connect();
-//
-// Connection.query('SELECT * FROM customers AS c WHERE c.id BETWEEN 5 AND 25 ORDER BY c.state', function (error, results, fields) {
-//     var records = [];
-//     if (error) {
-//         console.log(error);
-//     }
-//
-//     console.log(results);
-// });
-
-// Connection.end();
-
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended : false }));
+app.use(bodyParser.json());
 
 app.get("/api/user/get", (request, response) => {
-    let query = new SQLQuery();
-    let results = query.getUsers();
+    let dataBaseRequest = new SQLQuery();
+    let results = dataBaseRequest.getUsers();
 
     results.then((res) => {
         console.log(res);
@@ -53,8 +42,11 @@ app.get("/api/user/get", (request, response) => {
     });
 });
 
-app.post("api/user/add", (request, response) => {
-    // Do Some things
+app.post("/api/user/create", (request, response) => {
+    // let dataBaseRequest = new SQLQuery();
+    // let results = dataBaseRequest.createUser();
+    console.log(request.body);
+    response.send({key: "Success"});
 });
 
 app.listen(PORT, IP, () => {
@@ -66,6 +58,18 @@ function SQLQuery() {
 }
 
 SQLQuery.prototype.getUsers = function() {
+    return new Promise((resolve, reject) => {
+        this.connection.query('SELECT * FROM customers', function(err, res, fields) {
+           if(err) {
+               console.log(err);
+               reject(err);
+           }
+           resolve(res);
+       });
+    });
+}
+
+SQLQuery.prototype.createUser = function() {
     return new Promise((resolve, reject) => {
         this.connection.query('SELECT * FROM customers', function(err, res, fields) {
            if(err) {

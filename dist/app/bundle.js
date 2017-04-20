@@ -27884,10 +27884,49 @@
 	    function CreateUser() {
 	        _classCallCheck(this, CreateUser);
 
-	        return _possibleConstructorReturn(this, (CreateUser.__proto__ || Object.getPrototypeOf(CreateUser)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (CreateUser.__proto__ || Object.getPrototypeOf(CreateUser)).call(this));
+
+	        _this.state = {
+	            fullName: "",
+	            address: "",
+	            city: "",
+	            state: "",
+	            zip: ""
+	        };
+	        return _this;
 	    }
 
 	    _createClass(CreateUser, [{
+	        key: "createNewUser",
+	        value: function createNewUser(e) {
+	            this.sendNewUserNetworkRequest();
+	        }
+	    }, {
+	        key: "updateInputState",
+	        value: function updateInputState(e) {
+	            var valueObject = {};
+	            valueObject[e.target.name] = e.target.value;
+	            this.setState(valueObject);
+	        }
+	    }, {
+	        key: "sendNewUserNetworkRequest",
+	        value: function sendNewUserNetworkRequest() {
+	            var requestHeaders = new Headers();
+	            requestHeaders.append("Content-Type", "application/json; charset=utf-8");
+
+	            fetch("http://localhost:9000/api/user/create", {
+	                method: "POST",
+	                headers: requestHeaders,
+	                body: JSON.stringify(this.state)
+	            }).then(function (res) {
+	                return res.json();
+	            }).then(function (res) {
+	                console.log(res);
+	            }).catch(function (err) {
+	                console.log(err);
+	            });
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -27901,27 +27940,36 @@
 	                _react2.default.createElement(
 	                    "div",
 	                    { className: "row form-group mb-3" },
-	                    _react2.default.createElement("input", { type: "text", name: "name", placeholder: "Full Name" })
+	                    _react2.default.createElement("input", { onChange: this.updateInputState.bind(this), value: this.state.fullName, type: "text", name: "fullName", placeholder: "Full Name" })
 	                ),
 	                _react2.default.createElement(
 	                    "div",
 	                    { className: "row form-group mb-3" },
-	                    _react2.default.createElement("input", { type: "text", name: "address", placeholder: "Address" })
+	                    _react2.default.createElement("input", { onChange: this.updateInputState.bind(this), value: this.state.address, type: "text", name: "address", placeholder: "Address" })
 	                ),
 	                _react2.default.createElement(
 	                    "div",
 	                    { className: "row form-group mb-3" },
-	                    _react2.default.createElement("input", { type: "text", name: "city", placeholder: "City" })
+	                    _react2.default.createElement("input", { onChange: this.updateInputState.bind(this), value: this.state.city, type: "text", name: "city", placeholder: "City" })
 	                ),
 	                _react2.default.createElement(
 	                    "div",
 	                    { className: "row form-group mb-3" },
-	                    _react2.default.createElement("input", { type: "text", name: "state", placeholder: "State" })
+	                    _react2.default.createElement("input", { onChange: this.updateInputState.bind(this), value: this.state.state, type: "text", name: "state", placeholder: "State" })
 	                ),
 	                _react2.default.createElement(
 	                    "div",
 	                    { className: "row form-group mb-3" },
-	                    _react2.default.createElement("input", { type: "text", name: "zip", placeholder: "Zip" })
+	                    _react2.default.createElement("input", { onChange: this.updateInputState.bind(this), value: this.state.zip, type: "text", name: "zip", placeholder: "Zip" })
+	                ),
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "row form-group mb-3" },
+	                    _react2.default.createElement(
+	                        "button",
+	                        { className: "js-submit-user", onClick: this.createNewUser.bind(this) },
+	                        "Submit"
+	                    )
 	                )
 	            );
 	        }
